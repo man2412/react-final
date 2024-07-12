@@ -24,7 +24,12 @@ const ProductPage = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden md:max-w-2xl">
+      {/* Skip to Main Content Link */}
+      <a href="#main-content" className="sr-only focus:not-sr-only">
+        Skip to Main Content
+      </a>
+      
+      <div id="main-content" className="max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden md:max-w-2xl">
         <img className="h-48 w-full object-cover" src={product.image} alt={product.title} />
         <div className="p-4">
           <h2 className="text-2xl font-bold">{product.title}</h2>
@@ -36,7 +41,7 @@ const ProductPage = () => {
             <button onClick={() => setQuantity(quantity + 1)} className="px-2 py-1 bg-gray-200 rounded">+</button>
           </div>
           <div className="mt-4">
-            <button onClick={handleAddToCart} className="px-4 py-2 bg-blue-500 text-white rounded">Add to Cart (${(product.price * quantity).toFixed(2)})</button>
+            <button onClick={handleAddToCart} className="px-4 py-2 bg-blue-900 text-white rounded">Add to Cart (${(product.price * quantity).toFixed(2)})</button>
           </div>
         </div>
       </div>

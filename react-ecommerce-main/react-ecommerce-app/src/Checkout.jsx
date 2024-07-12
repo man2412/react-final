@@ -25,12 +25,16 @@ const Checkout = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    Object.entries(shippingInfo).forEach(([key, value]) => {
-      if (!value) newErrors[key] = `${key} is required`;
-    });
-    Object.entries(paymentInfo).forEach(([key, value]) => {
-      if (!value) newErrors[key] = `${key} is required`;
-    });
+
+    if (!shippingInfo.name.trim()) newErrors.name = 'Name is required';
+    if (!shippingInfo.address.trim()) newErrors.address = 'Address is required';
+    if (!shippingInfo.city.trim()) newErrors.city = 'City is required';
+    if (!/^\d{5}(?:[-\s]\d{4})?$/.test(shippingInfo.postalCode.trim())) newErrors.postalCode = 'Postal Code is invalid';
+
+    if (!/^\d{16}$/.test(paymentInfo.cardNumber.trim())) newErrors.cardNumber = 'Card Number is invalid';
+    if (!/^\d{2}\/\d{2}$/.test(paymentInfo.expiryDate.trim())) newErrors.expiryDate = 'Expiry Date is invalid (MM/YY)';
+    if (!/^\d{3,4}$/.test(paymentInfo.cVV.trim())) newErrors.cVV = 'CVV is invalid';
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -52,19 +56,25 @@ const Checkout = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Checkout</h2>
+      <a href="#main-content" className="skip-link">Skip to Main Content</a>
+      <h2 id="main-content" className="text-2xl font-bold mb-4">Checkout</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <h3 className="text-xl font-bold mb-2">Shipping Information</h3>
           <form>
             {['name', 'address', 'city', 'postalCode'].map((field) => (
               <div key={field} className="mb-4">
-                <label className="block text-gray-700">{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+                <label htmlFor={field} className="block text-gray-700">
+                  {field.charAt(0).toUpperCase() + field.slice(1)}
+                </label>
                 <input
                   type="text"
+                  id={field}
                   name={field}
                   value={shippingInfo[field]}
                   onChange={handleChange}
+                  placeholder={`Enter your ${field}`}
+                  aria-required="true"
                   className={`w-full px-4 py-2 border ${errors[field] ? 'border-red-500' : 'border-gray-300'} rounded-md`}
                 />
                 {errors[field] && <p className="text-red-500 text-xs mt-1">{errors[field]}</p>}
@@ -77,12 +87,17 @@ const Checkout = () => {
           <form>
             {['cardNumber', 'expiryDate', 'cVV'].map((field) => (
               <div key={field} className="mb-4">
-                <label className="block text-gray-700">{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+                <label htmlFor={field} className="block text-gray-700">
+                  {field === 'cVV' ? 'CVV' : field.charAt(0).toUpperCase() + field.slice(1)}
+                </label>
                 <input
                   type="text"
+                  id={field}
                   name={field}
                   value={paymentInfo[field]}
                   onChange={handleChange}
+                  placeholder={`Enter your ${field === 'cVV' ? 'CVV' : field}`}
+                  aria-required="true"
                   className={`w-full px-4 py-2 border ${errors[field] ? 'border-red-500' : 'border-gray-300'} rounded-md`}
                 />
                 {errors[field] && <p className="text-red-500 text-xs mt-1">{errors[field]}</p>}

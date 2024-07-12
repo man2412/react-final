@@ -8,7 +8,7 @@ const ThankYou = () => {
         <div className="p-4">
           <h2 className="text-2xl font-bold">Thank You for Your Order!</h2>
           <p className="mt-2 text-gray-600">We appreciate your business.</p>
-          <Link to="/" className="mt-4 block text-center px-4 py-2 bg-blue-500 text-white rounded">Back to Shopping</Link>
+          <Link to="/" className="mt-4 block text-center px-4 py-2 bg-blue-800 text-white rounded">Back to Shopping</Link>
         </div>
       </div>
     </div>

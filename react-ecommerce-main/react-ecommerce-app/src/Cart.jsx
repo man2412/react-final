@@ -50,7 +50,7 @@ const Cart = () => {
                   <span className="mx-2">{item.quantity}</span>
                   <button onClick={() => handleQuantityChange(item.id, item.quantity + 1)} className="px-2 py-1 bg-gray-200 rounded">+</button>
                 </div>
-                <button onClick={() => handleRemove(item.id)} className="px-4 py-2 bg-red-500 text-white rounded mt-2">Remove</button>
+                <button onClick={() => handleRemove(item.id)} className="px-4 py-2 bg-red-700 text-white rounded mt-2">Remove</button>
               </div>
             ))}
           </div>
@@ -59,9 +59,9 @@ const Cart = () => {
               <h3 className="text-lg font-bold mb-4">Order Summary</h3>
               <p>Total Items: {totalItems}</p>
               <p>Total Price: ${total.toFixed(2)}</p>
-              <button onClick={handleCheckout} className="px-4 py-2 bg-blue-500 text-white rounded mt-4 w-full">Continue to Checkout</button>
-              <button onClick={handleClearCart} className="px-4 py-2 bg-red-500 text-white rounded mt-2 w-full">Clear Cart</button>
-              <button onClick={handleReturnToShopping} className="px-4 py-2 bg-green-500 text-white rounded mt-2 w-full">Return to Shopping</button>
+              <button onClick={handleCheckout} className="px-4 py-2 bg-blue-600 text-white rounded mt-4 w-full">Continue to Checkout</button>
+              <button onClick={handleClearCart} className="px-4 py-2 bg-red-700 text-white rounded mt-2 w-full">Clear Cart</button>
+              <button onClick={handleReturnToShopping} className="px-4 py-2 bg-green-700 text-white rounded mt-2 w-full">Return to Shopping</button>
             </div>
           </div>
         </div>
