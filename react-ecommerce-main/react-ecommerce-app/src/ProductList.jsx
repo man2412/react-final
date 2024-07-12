@@ -3,6 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from './productsSlice';
 import { Link } from 'react-router-dom';
 
+const categories = [
+  { value: '', label: 'All Categories' },
+  { value: 'smartphones', label: 'Smartphones' },
+  { value: 'laptops', label: 'Laptops' },
+  { value: 'furniture', label: 'Furniture' },
+  { value: 'clothing', label: 'Clothing' }
+];
+
 const ProductList = () => {
   const dispatch = useDispatch();
   const productsData = useSelector((state) => state.products.items);
@@ -42,11 +50,11 @@ const ProductList = () => {
               onChange={(e) => setCategory(e.target.value)}
               className="border rounded p-2 w-full"
             >
-              <option value="">All Categories</option>
-              <option value="smartphones">Smartphones</option>
-              <option value="laptops">Laptops</option>
-              <option value="furniture">Furniture</option>
-              <option value="clothing">Clothing</option>
+              {categories.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
             </select>
           </div>
           <div className="mb-4">
