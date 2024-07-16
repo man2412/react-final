@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { addToCart } from './cartSlice';
 import { toast } from 'react-toastify';
 
+
 const ProductPage = () => {
   const { productId } = useParams();
   const productsResponse = useSelector((state) => state.products.items);
@@ -19,16 +20,17 @@ const ProductPage = () => {
 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...product, quantity }));
-    toast.success('Added to cart!');
+    toast.success('Added to cart!', {
+      style: {
+        // Black background
+        color: '#ffffff',
+        background: '#006B00', // White text
+      },
+    });
   };
 
   return (
     <div className="container mx-auto p-4">
-      {/* Skip to Main Content Link */}
-      <a href="#main-content" className="sr-only focus:not-sr-only">
-        Skip to Main Content
-      </a>
-      
       <div id="main-content" className="max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden md:max-w-2xl">
         <img className="h-48 w-full object-cover" src={product.image} alt={product.title} />
         <div className="p-4">

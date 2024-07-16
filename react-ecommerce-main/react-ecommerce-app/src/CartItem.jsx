@@ -27,7 +27,9 @@ const CartItem = ({ item }) => {
         <p className="text-gray-700">${item.price}</p>
         <div className="flex items-center">
           <button onClick={handleDecrement} className="px-2 py-1 bg-gray-300 text-gray-700 rounded">-</button>
+          <label htmlFor={`quantity-${item.id}`} className="sr-only">Quantity</label>
           <input
+            id={`quantity-${item.id}`}
             type="number"
             value={item.quantity}
             readOnly
@@ -36,7 +38,7 @@ const CartItem = ({ item }) => {
           <button onClick={handleIncrement} className="px-2 py-1 bg-gray-300 text-gray-700 rounded">+</button>
         </div>
       </div>
-      <button onClick={handleRemove} className="px-4 py-2 bg-red-500 text-white rounded">
+      <button onClick={handleRemove} className="px-4 py-2 bg-red-800 text-white rounded">
         Remove
       </button>
     </div>

@@ -29,10 +29,6 @@ const ProductList = () => {
 
   return (
     <div className="container mx-auto p-4">
-      {/* Skip to Main Content Link */}
-      <a href="#main-content" className="sr-only focus:not-sr-only">
-        Skip to Main Content
-      </a>
       
       <header className="mb-4">
         <h1 className="text-3xl font-bold text-black mb-2">Ecommerce Shop App</h1>

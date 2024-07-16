@@ -12,6 +12,7 @@ import ProductPage from './ProductPage';
 import { ToastContainer } from 'react-toastify';
 import ThankYou from './ThankYou';
 import 'react-toastify/dist/ReactToastify.css';
+import './App.css'
 
 import './index.css';
 
@@ -20,6 +21,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <div className="container mx-auto p-4">
+        <a href="#main-content" className="skip-link">Skip to Main Content</a>
         <Navbar />
         <ToastContainer />
           <Routes>

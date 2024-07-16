@@ -56,7 +56,7 @@ const Checkout = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <a href="#main-content" className="skip-link">Skip to Main Content</a>
+      
       <h2 id="main-content" className="text-2xl font-bold mb-4">Checkout</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
@@ -77,7 +77,7 @@ const Checkout = () => {
                   aria-required="true"
                   className={`w-full px-4 py-2 border ${errors[field] ? 'border-red-500' : 'border-gray-300'} rounded-md`}
                 />
-                {errors[field] && <p className="text-red-500 text-xs mt-1">{errors[field]}</p>}
+                {errors[field] && <p className="text-red-900 text-xs mt-1">{errors[field]}</p>}
               </div>
             ))}
           </form>
@@ -99,8 +99,9 @@ const Checkout = () => {
                   placeholder={`Enter your ${field === 'cVV' ? 'CVV' : field}`}
                   aria-required="true"
                   className={`w-full px-4 py-2 border ${errors[field] ? 'border-red-500' : 'border-gray-300'} rounded-md`}
+                  autoComplete="cc-csc"
                 />
-                {errors[field] && <p className="text-red-500 text-xs mt-1">{errors[field]}</p>}
+                {errors[field] && <p className="text-red-900 text-xs mt-1">{errors[field]}</p>}
               </div>
             ))}
           </form>
@@ -119,7 +120,7 @@ const Checkout = () => {
       </div>
       <div className="mt-4">
         <button onClick={() => navigate('/cart')} className="px-4 py-2 bg-gray-500 text-white rounded">Back to Cart</button>
-        <button onClick={handlePlaceOrder} className="px-4 py-2 bg-blue-500 text-white rounded">Place Order</button>
+        <button onClick={handlePlaceOrder} className="px-4 py-2 bg-blue-900 text-white rounded">Place Order</button>
       </div>
     </div>
   );
